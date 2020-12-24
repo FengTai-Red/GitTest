@@ -5,7 +5,11 @@
     background-color: rgba(111, 111, 111, 0.7);
 }
 .code_box .code {
+    font-size: 13px;
     white-space : pre;
     line-height: 50%;
     color: #000000;
+}
+p {
+    font-size: 13px;
 }

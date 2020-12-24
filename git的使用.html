@@ -34,5 +34,28 @@
     <div class="code_box">
         <p class="code">git commit -m "本次提交的说明"</p>
     </div>
+    <h3>版本回滚</h3>
+    <p>当对项目中的文件进行变动时，也会被Git进行检测到,此时输入"git status"可以看到修改的文件变红了</p>
+    <p>接着依次以下两个命令对文件进行管理和提交</p>
+    <div class="code_box">
+        <p class="code">git add 文件名  # 仅仅管理一个文件</p>
+        <p class="code">git commit -m "本次提交的说明"</p>
+    </div>
+    <p>接着使用以下命令就可以查看最近的提交日志</p>
+    <div class="code_box">
+        <p class="code">git log</p>
+    </div>
+    <p>此时就进入了日志查看的状态，可以使用上下键来查看，或按下"q"退出,如果嫌输出信息太多，可以加上"--pretty=oneline"在命令后面加上参数</p>
+    <p>每个版本都有一个对应的SHA1值，要通过这个来回滚版本</p>
+    <p>接着就可以使用以下命令将其退回上一个版本</p>
+    <div class="code_box">
+        <p class="code">git reset --hard HEAD^</p>
+    </div>
+    <p>其中HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，往上100个版本可以写成HEAD~100</p>
+    <p>或者可以指定版本号进行回滚</p>
+    <div class="code_box">
+        <p class="code">git reset --hard 版本号</p>
+    </div>
+    <p>版本号没必要写全，前几位就可以了，Git会自动去找</p>
 </body>
 </html>
