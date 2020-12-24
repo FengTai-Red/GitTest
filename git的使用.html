@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>本地仓库</h1>
+    <h3><a href="https://www.cnblogs.com/Yunya-Cnblogs/p/13948914.html">参考链接</a></h3>
     <h3>版本提交</h3>
     <p>首先配置一下个人信息</p>
     <div class="code_box">
@@ -57,5 +58,109 @@
         <p class="code">git reset --hard 版本号</p>
     </div>
     <p>版本号没必要写全，前几位就可以了，Git会自动去找</p>
+    <p>若回滚到了低版本想回到高版本时，可以使用以下命令查看查看所有分支的所有操作记录</p>
+    <div class="code_box">
+        <p class="code">git reflog</p>
+    </div>
+    <p>接着使用"git reset --hard 版本号"进行版本替换</p>
+    <h3>撤销修改</h3>
+    <p>当修改了文件后，使用"git status"可以看到修改的文件变红了</p>
+    <p>如果想撤销这一次的修改，可以输入以下命令</p>
+    <div class="code_box">
+        <p class="code">  # 放弃单个文件修改,注意不要忘记中间的"--",不写就成了检出分支了</p>
+        <p class="code">git checkout .  # 放弃所有的文件修改</p>
+    </div>
+    <p>若已经使用"git add ."将文件添加到了缓存区，那可以使用以下命令来撤销修改</p>
+    <div class="code_box">
+        <p class="code">git reset HEAD 文件名  # 放弃指定文件的缓存</p>
+        <p class="code">git reset HEAD .  # 放弃所有的缓存</p>
+    </div>
+    <p>若是已经使用"git commit -m "本次提交的说明""将修改提交了，那只能使用"git reset --hard 版本号"进行退回了</p>
+    <h3>删除文件</h3>
+    <p>当在本地新增了一个文件并上传之后，如果之后又进行了删除，在使用"git status"可以git会提示那些文件被删除了</p>
+    <p>如果确定要删除，可以输入以下命令进行删除</p>
+    <div class="code_box">
+        <p class="code">git rm 文件名</p>
+    </div>
+    <p>接着使用"git commit"进行提交</p>
+    <p>如果不想删除，可以使用"git checkout -- 文件名"进行恢复</p>
+    <h3>分区的概念</h3>
+    <p>在上面的操作中，可以发现目前的一个文件可以有多个状态</p>
+    <p>1.已控制状态：指该文件可以被git管理的状态，目前来讲所有位于git init文件夹下的文件都是以控制状态</p>
+    <p>2.已变动状态：当有新文件，或原本文件被修改后，使用git status呈现红色状态的文件</p>
+    <p>3.暂存区状态：指的是执行git add命令后，红色状态文件变为绿色状态的文件</p>
+    <p>4.版本库状态：指的是执行git commit命令后，提交至版本库的文件</p>
+    <img src="img/git的分区.jpg" alt="">
+    <h1>远程仓库</h1>
+    <h3>创建远程仓库</h3>
+    <p>当我们登录GitHub之后，首先要做的就是创建一个远程仓库</p>
+    <img src="img/GitHubA.png" alt="">
+    <p>然后点击New准备新建仓库</p>
+    <img src="img/GitHubB.png" alt="">
+    <p>对仓库进行配置</p>
+    <img src="img/GitHubC.png" alt="">
+    <p>创建完成</p>
+    <img src="img/GitHubD.png" alt="">
+    <h3>推送代码</h3>
+    <p>首先输入以下命令，将本地仓库与远程仓库进行关联，origin是别名</p>
+    <div class="code_box">
+        <p class="code">git remote add origin https://github.com/FengTai-Red/GitTest.git</p>
+    </div>
+    <p>接着输入以下命令，将本地仓库的所有内容推送到远程仓库</p>
+    <div class="code_box">
+        <p class="code">git push -u origin master</p>
+    </div>
+    <p>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令</p>
+    <p>第一次使用GitHub，会弹出验证窗口，点击按钮登录即可</p>
+    <p>现在打开仓库，就能看到文件都已经上传上去了</p>
+    <p>接下来只要只要本地作了提交，就可以通过以下命令将其推送到远程仓库</p>
+    <div class="code_box">
+        <p class="code">git push origin master</p>
+    </div>
+    <h3>拉取代码</h3>
+    <p>使用以下命令进行拉取</p>
+    <div class="code_box">
+        <p class="code">git clone https://github.com/FengTai-Red/GitTest.git</p>
+    </div>
+    <h3>分支管理</h3>
+    <p>可以使用以下命令来查看分支情况</p>
+    <div class="code_box">
+        <p class="code">git branch</p>
+    </div>
+    <p>使用以下命令来创建一个分支</p>
+    <div class="code_box">
+        <p class="code">git branch 新分支名字</p>
+    </div>
+    <p>这时在使用"git branch"命令就可以看到刚刚新建的分支了，其中前面带"*"号的就是当前处于的分支</p>
+    <p>使用以下命令进行分支的切换</p>
+    <div class="code_box">
+        <p class="code">git checkout 分支名字</p>
+    </div>
+    <p>现在就可以在该分支对当前项目进行操作</p>
+    <p>接下来的操作和前面一样，将修改后的文件添加到暂存区，然后提交</p>
+    <p>接下来进行分支合并，先使用">git checkout"切换为主分支，然后使用以下命令进行分支合并</p>
+    <div class="code_box">
+        <p class="code">git merge 分支名字</p>
+    </div>
+    <p>使用"git log"命令可以看到分支合并的操作</p>
+    <p>如果不想要该分支了，可以使用以下命令进行删除</p>
+    <div class="code_box">
+        <p class="code">git barnch -d 分支名字</p>
+    </div>
+    <h3>处理冲突</h3>
+    <p>使用多分支进行开发，可能会出现合并冲突的情况</p>
+    <p>比如在master和dev都对同一行进行了修改，且都使用"commit"提交到了版本库中</p>
+    <p>接下来使用"merge"进行合并操作时，git会提示存在合并冲突的问题</p>
+    <p>在vscode等编辑器中打开合并冲突的文件，可以看到Git用<<<<<<<，=======，>>>>>>>标记出不同分支的内容</p>
+    <p>这种情况就需要手动进行修改，解决冲突后在进行"add"和"commit"提交到版本库即可</p>
+    <h1>其他操作</h1>
+    <h3>版本合并</h3>
+    <p>当多次进行代码提交后，那么提交记录将会变得非常的繁琐</p>
+    <p>这是可以使用以下命令将版本进行合并，让他看起来更简洁。（这可能会引发合并冲突）</p>
+    <div class="code_box">
+        <p class="code">git rebase -i HEAD~4  # 从最上面的版本数四个进行合并</p>
+    </div>
+    <p>现在它会弹出一个vim，需要编辑描述信息</p>
+    <p>再使用git log进行查看，就简洁多了</p>
 </body>
 </html>
