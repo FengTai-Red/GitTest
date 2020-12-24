@@ -4,10 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/article.css">
 </head>
 <body>
     <h1>本地仓库</h1>
     <h3>版本提交</h3>
-    <p></p>
+    <p>首先配置一下个人信息</p>
+    <div class="code_box">
+        <p class="code">git config --global user.email "邮箱地址"</p>
+        <p class="code">git config --global user.name "用户名"</p>
+    </div>
+    <p>然后进入要进行项目管理的文件夹，输入以下命令让Git管理该文件夹</p>
+    <div class="code_box">
+        <p class="code">git init</p>
+    </div>
+    <p>当初始化命令生效后，在该文件夹中会生成一个.git的隐藏文件夹。</p>
+    <p>然后我们使用以下命令来检测当前文件夹中被管理的文件状态</p>
+    <div class="code_box">
+        <p class="code">git status</p>
+    </div>
+    <p>新增的文件和修改后的文件均属于未被管理的文件，呈现红色状态</p>
+    <p>接下来可以使用以下任意一个命令对文件进行管理</p>
+    <div class="code_box">
+        <p class="code">git add 文件名  # 仅仅管理一个文件</p>
+        <p class="code">git add .   # 代表当前目录下的所有文件</p>
+    </div>
+    <p>这时再次输入"git status"命令就可以看到文件变成了绿色</p>
+    <p>接着使用以下命令，将文件添加到仓库</p>
+    <div class="code_box">
+        <p class="code">git commit -m "本次提交的说明"</p>
+    </div>
 </body>
 </html>

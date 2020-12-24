@@ -1,0 +1,11 @@
+.code_box {
+    width: 80%;
+    overflow: auto;
+    padding-left: 10px;
+    background-color: rgba(111, 111, 111, 0.7);
+}
+.code_box .code {
+    white-space : pre;
+    line-height: 50%;
+    color: #000000;
+}
