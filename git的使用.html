@@ -158,9 +158,24 @@
     <p>当多次进行代码提交后，那么提交记录将会变得非常的繁琐</p>
     <p>这是可以使用以下命令将版本进行合并，让他看起来更简洁。（这可能会引发合并冲突）</p>
     <div class="code_box">
-        <p class="code">git rebase -i HEAD~4  # 从最上面的版本数四个进行合并</p>
+        <p class="code">git rebase -i HEAD~5  # 从最上面的版本数四个进行合并</p>
     </div>
-    <p>现在它会弹出一个vim，需要编辑描述信息</p>
+    <p>将执行命令后输出的前几行中需要合并的版本前面的"pick"改成"s"，大致如下(s代表合并)</p>
+    <div class="code_box">
+        <p class="code">pick 2ca0db</p>
+        <p class="code">s 091ed6</p>
+        <p class="code">s eeeca3</p>
+        <p class="code">s b855d5</p>
+        <p class="code"># Rebase 0a7bbf..b855d5 onto 0a7bbf (4 commands)</p>
+        <p class="code"># </p>
+        <p class="code"># Commands</p>
+        <p class="code"># ...</p>
+    </div>
+    <p>现在它会弹出一个vim，需要编辑描述信息，这里可以稍微备注以下</p>
     <p>再使用git log进行查看，就简洁多了</p>
+    <h3>忽略文件</h3>
+    <P>有些时候,必须把某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件</P>
+    <p>这时就可以在项目中创建.gitignore文件，输入匹配规则，当前项目中所有匹配的文件将不会被Git所管理</p>
+    <p>具体规则可以上<a href="https://github.com/github/gitignore">这里</a>参考，或百度</p>
 </body>
 </html>
